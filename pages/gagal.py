@@ -6,7 +6,7 @@ st.set_page_config(page_title="Gagal", page_icon="🔴", layout="centered")
 st.title("PENGESAHAN GAGAL ❌")
 
 # Load image correctly
-img = load_image("fakyu.jpg")
+img = load_image("dislike.jpg")
 if img:
     st.image(img, width=300)
 
