@@ -7,15 +7,18 @@ st.set_page_config(page_title="Pengesahan", page_icon="📄", layout="centered")
 # Retrieve data from session_state
 staff_id = st.session_state.get("staff_id", None)
 staff_name = st.session_state.get("staff_name", None)
-timestamp = st.session_state.get("timestamp", None)
+company_name = st.session_state.get("company_name", None)
+organizational_unit = st.session_state.get("organizational_unit", None)
 
 st.header("Pengesahan Kehadiran")
 
-gap(2)
+gap(1)
 
 # Display staff info (disabled so cannot edit)
 st.text_input("Staff ID", staff_id, disabled=True)
 st.text_input("Nama", staff_name, disabled=True)
+st.text_input("Company", company_name, disabled=True)
+st.text_input("Unit", organizational_unit, disabled=True)
 
 gap(1)
 
