@@ -8,5 +8,5 @@ gagal_page = st.Page("pages/gagal.py", title="Gagal", icon="🔴")
 data_viewer_page = st.Page("pages/data_viewer.py", title="Data Viewer", icon="📊")
 
 # Navigation controller
-pg = [homepage_page, pengesahan_page, berjaya_page, gagal_page, data_viewer_page]
+pg = st.navigatiom[homepage_page, pengesahan_page, berjaya_page, gagal_page, data_viewer_page]
 pg.run()
