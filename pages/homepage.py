@@ -6,12 +6,11 @@ from db import get_connection   # <-- use your db.py connection
 st.set_page_config(page_title="iAttend", page_icon="🌐", layout="centered")
 
 # --- Function to validate staff ID ---
-# homepage.py
 def check_staff(staff_id):
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
-        "SELECT staff_id, employee_name, company_name, organizational_unit "
+        "SELECT staff_id, employee_name, company_name, organizational_unit, attendance, checkin_time "
         "FROM union_member WHERE staff_id = %s", 
         (staff_id,)
     )
@@ -43,12 +42,10 @@ with col2:
         # If empty input
         if x.strip() == "":
             st.session_state["error_msg"] = "Sila masukkan staff ID anda."
-            st.switch_page("pages/gagal.py")
 
         # If contains non-digit characters
         elif not x.isdigit():  
             st.session_state["error_msg"] = "Staff ID hanya boleh mengandungi nombor."
-            st.switch_page("pages/gagal.py")
 
         else:
             # --- Check DB for staff ---
@@ -59,7 +56,16 @@ with col2:
                 st.session_state["staff_name"] = staff[1]
                 st.session_state["company_name"] = staff[2]
                 st.session_state["organizational_unit"] = staff[3]
+                st.session_state["attendance"] = staff[4]
+                st.session_state["timestamp"] = staff[5].strftime("%Y-%m-%d %H:%M:%S") if staff[5] else None
+
+                # If valid staff → go pengesahan
                 st.switch_page("pages/pengesahan.py")
+
             else:
                 st.session_state["error_msg"] = "Maaf, nama anda tidak tersenarai sebagai ahli berdaftar."
-                st.switch_page("pages/gagal.py")
+
+# --- Show error inline ---
+if "error_msg" in st.session_state:
+    st.error(st.session_state["error_msg"])
+
