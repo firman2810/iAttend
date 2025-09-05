@@ -3,7 +3,10 @@ from datetime import datetime
 from utils import gap
 from db import get_connection  
 
-st.set_page_config(page_title="Pengesahan", page_icon="📄", layout="centered")
+if st.button("Back", icon = ":material/arrow_back:"):
+    st.switch_page("pages/homepage.py")
+
+st.set_page_config(page_title="iAttend | Pengesahan", page_icon="🌐", layout="centered")
 
 # Retrieve data from session_state
 staff_id = st.session_state.get("staff_id")
