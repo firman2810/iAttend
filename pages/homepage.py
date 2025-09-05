@@ -3,7 +3,7 @@ from PIL import Image
 from utils import load_image, gap
 from db import get_connection   # <-- use your db.py connection
 
-st.set_page_config(page_title="iAttend", page_icon="🌐", layout="centered")
+st.set_page_config(page_title="iAttend | Home", page_icon="🌐", layout="centered")
 
 # --- Function to validate staff ID ---
 def check_staff(staff_id):
